@@ -129,7 +129,8 @@ input.addEventListener('keyup', handleChange);
 //   console.log(iti.getNumber())
 // }
 
-send_data = iti.getNumber();
+send_data = document.getElementById('phone').value;
+// send_data = iti.getNumber();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
   tg.sendData(send_data);
