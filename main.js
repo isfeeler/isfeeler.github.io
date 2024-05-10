@@ -116,6 +116,7 @@ const handleChange = () => {
   }
   if (iti.isValidNumber()) {
     tg.MainButton.show();
+    var tel = document.getElementById('phone').value;
   } else {
     tg.MainButton.hide();
   }
@@ -137,6 +138,6 @@ input.addEventListener('keyup', handleChange);
 // send_data = iti.getNumber();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  tg.sendData(basker);
+  tg.sendData(tel);
   // tg.sendData("some string that we need to send"); 
 })
