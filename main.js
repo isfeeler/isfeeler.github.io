@@ -2,7 +2,7 @@ let tg = window.Telegram.WebApp
 
 tg.expand();
 
-tg.MainButton.show();
+// tg.MainButton.show();
 tg.MainButton.text = "Заказать"; 
 
 
@@ -109,10 +109,15 @@ const handleChange = () => {
   let text;
   if (input.value) {
     text = iti.isValidNumber()
-      ? "Заказ оформится на номер: " + iti.getNumber()
+      ? "Заказ оформится на номер: " + iti.getNumber()      
       : "Номер введен неправильно. Начните с 9хх без +7 и 8.";
   } else {
     text = "Введите номер телефона:";
+  }
+  if (iti.isValidNumber()) {
+    tg.MainButton.show();
+  } else {
+    tg.MainButton.hide();
   }
   const textNode = document.createTextNode(text);
   output.innerHTML = "";
@@ -129,11 +134,9 @@ input.addEventListener('keyup', handleChange);
 //   console.log(iti.getNumber())
 // }
 
-// send_data = document.getElementById('phone').value;
-send_data = basket + iti.getNumber();
-// send_data = "Данные отправлены";
+// send_data = iti.getNumber();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  tg.sendData(send_data);
+  tg.sendData(basker);
   // tg.sendData("some string that we need to send"); 
 })
