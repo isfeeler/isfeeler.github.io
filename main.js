@@ -138,7 +138,10 @@ input.addEventListener('keyup', handleChange);
 
 // send_data = iti.getNumber();
 
+let strbasket = JSON.stringify(basket);
+
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  tg.sendData(basket + iti.getNumber());
+  tg.sendData(strbasket + iti.getNumber());
   // tg.sendData("some string that we need to send"); 
 })
+
